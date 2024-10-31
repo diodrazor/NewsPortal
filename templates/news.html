@@ -1,0 +1,29 @@
+{% extends 'flatpages/default.html' %}
+{% load custom_filters %}
+{% block title %}
+ <title>News</title>
+{% endblock title %}
+
+{% block content %}
+<h1>Все новости ({{news|length}})</h1>
+
+<hr>
+<table>
+           <tr>
+               <td>Название</td>
+               <td>Дата</td>
+               <td>Текст</td>
+           </tr>
+
+           {% for new in news|dictsortreversed:"time_in" %}
+           <tr>
+
+               <td>{{ new.title|censor }}</td>
+               <td>{{ new.time_in|date:'d M Y'}}</td>
+               <td>{{ new.text|truncatechars:20|censor }}</td>
+
+           </tr>
+           {% endfor %}
+
+       </table>
+{% endblock content %}

@@ -1,0 +1,29 @@
+{% extends 'flatpages/default.html' %}
+{% load custom_filters %}
+
+{% block title %}
+ <title>New</title>
+{% endblock title %}
+
+
+{% block content %}
+<hr>
+<table>
+           <tr>
+               <td>Название</td>
+               <td>Дата</td>
+               <td>Текст</td>
+           </tr>
+
+
+           <tr>
+
+               <td>{{ new.title|censor }}</td>
+               <td>{{ new.time_in|date:'d M Y'}}</td>
+               <td>{{ new.text|censor}}</td>
+
+           </tr>
+
+
+       </table>
+{% endblock content %}
